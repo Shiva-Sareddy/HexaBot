@@ -1,22 +1,48 @@
 import { useState } from "react";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
 import Chat from "./components/Chat";
+import Sidebar from "./components/Sidebar";
+import "./index.css";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(true);
   const [userId, setUserId] = useState(localStorage.getItem("userId") || null);
+  const [darkMode, setDarkMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
     setUserId(null);
   };
 
-  // if (userId) {
-  //   return <Chat userId={userId} onLogout={handleLogout} />;
-  // }
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+    document.body.classList.toggle("dark-mode");
+  };
 
-  return <Chat />;
+  return (
+    <div className={`app-container ${darkMode ? "dark" : ""}`}>
+      {userId && (
+        <Sidebar
+          username={`User${userId}`}
+          isOpen={sidebarOpen}
+          toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+          onLogout={handleLogout}
+        />
+      )}
+      <div className="main-content">
+        <div className="header">
+          <h1>HEXABOT</h1>
+          <button className="toggle-mode" onClick={toggleDarkMode}>
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div>
+        {userId ? (
+          <Chat userId={userId} />
+        ) : (
+          <p>Please log in to start chatting.</p>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default App;

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./Chat.css";
 
-const Chat = ({ userId, onLogout }) => {
+const Chat = ({ userId }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
@@ -37,10 +37,7 @@ const Chat = ({ userId, onLogout }) => {
       } catch (error) {
         setMessages((prev) => [
           ...prev,
-          {
-            message_text: "An error occurred while processing your request.",
-            is_user: false,
-          },
+          { message_text: "Error occurred.", is_user: false },
         ]);
       }
     }
@@ -48,14 +45,6 @@ const Chat = ({ userId, onLogout }) => {
 
   return (
     <div className="chat-container">
-      {/* Header with Logout Button */}
-      <div className="chat-header">
-        <span>HexaBot</span>
-        <button className="logout-btn" onClick={onLogout}>
-          Logout
-        </button>
-      </div>
-
       {/* Chat Window */}
       <div className="chat-window">
         {messages.map((msg, index) => (
