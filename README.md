@@ -25,7 +25,7 @@ HEXABOT is a full-stack AI chat assistant designed to simulate intelligent, huma
 ![Chat Screenshot](screenshots/chat-ui.png)
 
 ### Settings & Sidebar  
-![Settings Screenshot](screenshots/sidebar.png)
+![Settings Screenshot](screenshots/Settings.png)
 
 > Make sure to save your screenshots inside a `screenshots/` folder in the root of the repo.
 
