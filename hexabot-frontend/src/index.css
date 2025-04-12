@@ -7,7 +7,6 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* App Container */
 .app-container {
   display: flex;
   height: 100vh;
@@ -23,38 +22,72 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Hexabot Title */
+.title {
+  font-size: 24px;
+  font-weight: 500;
 }
 
 /* Header */
-.header {
+/* .header {
+  margin-left: 30px;
+  height: 65px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px 20px;
+  padding: 5px 20px;
   position: fixed;
   top: 0;
   background-color: var(--bg-color);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+} */
+
+/* Chat Input Bar */
+.chat-input {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 0 8px;
+  border-radius: 35px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-/* Dark Mode Toggle Button */
-.toggle-mode {
-  padding: 8px 12px;
+.chat-input input {
+  flex: 1;
+  padding: 20px 18px;
   border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s;
+  border-radius: 50%;
+  outline: none;
+  font-size: 20px;
 }
 
-.toggle-mode:hover {
+.chat-input input::placeholder {
+  opacity: 0.8;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  border-radius: 50%;
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
   background-color: #0056b3;
 }
 
@@ -63,7 +96,377 @@ body {
   --bg-color: #1e1e1e;
   --text-color: white;
 }
+
 .light-mode {
   --bg-color: white;
   --text-color: black;
+}
+
+/* Login & Signup Container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--bg-color);
+}
+
+/* Existing styles remain unchanged */
+/* .settings-btn {
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  margin-right: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: black;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.5s all ease;
+} */
+.settings-btn:hover {
+  background-color: #000000;
+  color: #fff;
+}
+.main-content.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.settings-popup {
+  background-color: white;
+  border-radius: 12px;
+  width: 330px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.dark .settings-popup {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.dark .settings-header {
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.settings-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.dark .close-btn {
+  color: #aaa;
+}
+
+.dark .close-btn:hover {
+  background-color: #3a3a3a;
+}
+
+.settings-content {
+  padding: 30px;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.settings-row:last-child {
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.theme-toggle {
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+}
+
+.dark .theme-toggle {
+  border: 1px solid #3a3a3a;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.theme-btn.active {
+  background-color: #f0f0f0;
+  font-weight: 500;
+}
+
+.dark .theme-btn {
+  color: #ddd;
+}
+
+.dark .theme-btn.active {
+  background-color: #3a3a3a;
+}
+
+.logout-btn {
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
+
+/*NEW STYLES*/
+
+:root {
+  --header-height: 60px;
+  --text-color: #333;
+  --bg-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  padding: 0;
+  transition: filter 0.3s;
+}
+
+.blurred {
+  filter: blur(4px);
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.settings-btn {
+  background: #007bff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  color: #fff;
+}
+
+.settings-btn:hover {
+  background-color: #0062ca;
+}
+
+/* Settings overlay */
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.settings-popup {
+  background-color: var(--bg-color);
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #f8fbff;
+  border-bottom: 1px solid #eee;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000000;
+}
+
+.settings-content {
+  padding: 30px;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.theme-toggle {
+  display: flex;
+  gap: 4px;
+}
+
+.theme-btn {
+  padding: 8px 24px;
+  border: none;
+  /* border-radius: 20px; */
+  background: none;
+  cursor: pointer;
+}
+
+.theme-btn.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.logout-btn {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f44336;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Dark Mode */
+.dark-mode {
+  --text-color: #fff;
+  --bg-color: #0f0f0f;
+}
+
+.dark-mode .header {
+  background-color: #222;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .settings-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .settings-popup {
+  background-color: #333;
+}
+
+.dark-mode .settings-header {
+  color: #000000;
+  border-bottom-color: #444;
+}
+
+.dark-mode .theme-btn {
+  border-color: #555;
+  color: #ddd;
+}
+
+.dark-mode .close-btn {
+  color: #000000;
+  font-size: 24px;
 }
